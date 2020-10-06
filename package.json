@@ -2,6 +2,11 @@
   "name": "@dmitry-n-medvedev/c3",
   "version": "0.0.0",
   "description": "c3",
+  "engines": {
+    "node": "= 14.13.0",
+    "pnpm": "= 5.8.0"
+  },
+  "engineStrict": true,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Dmitry-N-Medvedev/c3.git"
