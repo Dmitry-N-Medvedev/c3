@@ -21,7 +21,12 @@ const onwarn = (warning, onwarn) =>
 export default {
 	client: {
 		input: config.client.input(),
-		output: config.client.output(),
+		output: {
+			...config.client.output(),
+			...{
+				format: 'esm',
+			}
+		},
 		plugins: [
 			OMT(),
 			replace({
@@ -67,7 +72,12 @@ export default {
 
 	server: {
 		input: config.server.input(),
-		output: config.server.output(),
+		output: {
+			...config.server.output(),
+			...{
+				format: 'esm',
+			}
+		},
 		plugins: [
 			OMT(),
 			replace({
