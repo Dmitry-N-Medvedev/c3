@@ -1,0 +1,17 @@
+dist: bionic
+language: node_js
+node_js:
+  - 14.13.0
+os: linux
+before_install:
+  - curl -L https://raw.githubusercontent.com/pnpm/self-installer/master/install.js | PNPM_VERSION=5.8.0 node
+  - pnpm config set store-dir ~/.pnpm-store
+  - pnpm --version
+install:
+  - pnpm --recursive install
+script:
+  - pnpm --recursive run test
+cache:
+  npm: false
+  directories:
+    - "~/.pnpm-store"
