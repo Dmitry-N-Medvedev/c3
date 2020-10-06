@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.com/Dmitry-N-Medvedev/c3.svg?branch=main)](https://travis-ci.com/Dmitry-N-Medvedev/c3)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/97b3e89172da45159552214c0a5f6510)](https://app.codacy.com/gh/Dmitry-N-Medvedev/c3?utm_source=github.com&utm_medium=referral&utm_content=Dmitry-N-Medvedev/c3&utm_campaign=Badge_Grade)
+[![Maintainability](https://api.codeclimate.com/v1/badges/b2620e58080d48880a87/maintainability)](https://codeclimate.com/github/Dmitry-N-Medvedev/c3/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/b2620e58080d48880a87/test_coverage)](https://codeclimate.com/github/Dmitry-N-Medvedev/c3/test_coverage)
 
 ## disclamer
 
