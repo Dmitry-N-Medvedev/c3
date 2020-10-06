@@ -1,5 +1,7 @@
 # c3
 
+[![Build Status](https://travis-ci.com/Dmitry-N-Medvedev/c3.svg?branch=main)](https://travis-ci.com/Dmitry-N-Medvedev/c3)
+
 ## disclamer
 
 You will notice I use the latest versions of software ( pnpm, node.js, etc ). This is a deliberate decision - people behind these projects
