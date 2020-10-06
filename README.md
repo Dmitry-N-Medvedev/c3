@@ -1,5 +1,7 @@
 # c3
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/97b3e89172da45159552214c0a5f6510)](https://app.codacy.com/gh/Dmitry-N-Medvedev/c3?utm_source=github.com&utm_medium=referral&utm_content=Dmitry-N-Medvedev/c3&utm_campaign=Badge_Grade)
+
 ## disclamer
 
 You will notice I use the latest versions of software ( pnpm, node.js, etc ). This is a deliberate decision - people behind these projects
