@@ -1,13 +1,23 @@
 :root {
-	--body-background-color: hsl(0, 0%, 100%);
+	--body-background-color: hsl(0deg 0% 95%);
 	--body-font-size: 14px;
 	--body-line-height: 1.5;
-	--body-font-color: hsl(0, 0%, 62%);
+	--body-font-color: hsl(0deg 0% 62%);
 	--body-font-family: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 
 	--input-height: 3vh;
-	--input-background-color: var(--body-background-color);
+	--input-font-size: 2.5vh;
+	--input-background-color: transparent;
 	--input-font-color: var(--body-font-color);
+	--input-invalid-border-color: hsla(21, 100%, 50%, 0.851);
+	--input-placeholder-color: var(--input-invalid-border-color);
+
+	--filter-drop-shadow-color: hsl(0deg 0% 70%);
+	--filter-drop-shadow: 0px 0px 0.25vw var(--filter-drop-shadow-color);
+
+	--control-border-radius: 0.125vw;
+	--button-background-color: hsl(249, 84%, 71%);
+	--button-color: var(--body-background-color);
 }
 
 * {
@@ -62,10 +72,32 @@ svg {
 	pointer-events: none;
 }
 
-input[type="radio"],
-label[for] {
-	pointer-events: all;
-	cursor: pointer;
+input:not(:optional):invalid {
+	border-bottom: max(0.125vh, 0.125vw) solid var(--input-invalid-border-color);
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+input:disabled {
+  filter: grayscale(0.75) blur(3px);
+  pointer-events: none !important;
+}
+
+input[type="email"],
+input[type="password"] {
+	background-color: var(--input-background-color);
+}
+
+input[type="email"],
+input[type="password"],
+input[type="submit"] {
+	font-size: var(--input-font-size);
+	border-radius: var(--control-border-radius);
+}
+
+input[type="email"]::placeholder,
+input[type="password"]::placeholder {
+	color: var(--input-placeholder-color);
 }
 
 a:visited {

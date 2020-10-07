@@ -21,6 +21,7 @@ importers:
   sources/front-end:
     dependencies:
       compression: 1.7.4
+      nanoid: 3.1.12
       polka: 1.0.0-next.11
       sirv: 1.0.6
     devDependencies:
@@ -55,6 +56,7 @@ importers:
       compression: ^1.7.1
       eslint-plugin-node: ^11.1.0
       eslint-plugin-svelte3: ^2.7.3
+      nanoid: ^3.1.12
       polka: next
       rollup: ^2.3.4
       rollup-plugin-svelte: ^6.0.0
@@ -2964,6 +2966,13 @@ packages:
     dev: true
     resolution:
       integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==
+  /nanoid/3.1.12:
+    dev: false
+    engines:
+      node: ^10 || ^12 || >=13.7
+    hasBin: true
+    resolution:
+      integrity: sha512-1qstj9z5+x491jfiC4Nelk+f8XBad7LN20PmyWINJEMRSf3wcAjAWysw1qaA8z6NSKe2sjq1hRSDpBH5paCb6A==
   /natural-compare/1.4.0:
     dev: true
     resolution:
