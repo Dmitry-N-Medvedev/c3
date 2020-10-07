@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "c3",
   "engines": {
-    "node": "= 14.13.0",
+    "node": "= 14.13.1",
     "pnpm": "= 5.8.0"
   },
   "engineStrict": true,
@@ -31,6 +31,6 @@
     "nyc": "^15.1.0"
   },
   "volta": {
-    "node": "14.13.0"
+    "node": "14.13.1"
   }
 }

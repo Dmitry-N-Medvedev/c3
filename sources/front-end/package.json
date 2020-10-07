@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "engines": {
-    "node": "14.13.0",
+    "node": "14.13.1",
     "pnpm": "5.8.0"
   },
   "engineStrict": true,
@@ -19,6 +19,7 @@
     "compression": "^1.7.1",
     "cookie-parser": "^1.4.5",
     "firebase": "^7.22.1",
+    "firebase-admin": "^9.2.0",
     "js-cookie": "^2.2.1",
     "nanoid": "^3.1.12",
     "polka": "next",
@@ -44,7 +45,7 @@
     "svelte": "^3.17.3"
   },
   "volta": {
-    "node": "14.13.0"
+    "node": "14.13.1"
   },
   "eslintConfig": {
     "parser": "babel-eslint",
