@@ -1,7 +1,7 @@
 <script>
   import Input from '../Controls/Inputs/Input.svelte';
 
-  let authForm;
+  let disabled = false;
 
   const handleFieldChange = ({ key, event }) => {
     console.debug('AuthScreen:handleFieldChange', key, event);
@@ -11,7 +11,9 @@
     const email = event.target?.email?.value ?? null;
     const password = event.target?.password?.value ?? null;
 
-    if (email && password) {
+    disabled = email && password;
+
+    if (disabled) {
       console.debug('handleFormSubmit', email, password);
     }
   };
@@ -97,7 +99,7 @@
   TODO:  auth-screen should be extracted to its own component
 -->
 <article id="auth-screen">
-  <form id="auth-form" on:submit|preventDefault|stopPropagation={handleFormSubmit} bind:this={authForm}>
+  <form id="auth-form" on:submit|preventDefault|stopPropagation={handleFormSubmit}>
     <label id="auth-form-label" for="auth-form">
       please authenticate
     </label>
@@ -109,6 +111,7 @@
         placeholder="your email"
         autocomplete="email"
         required
+        {disabled}
         on:message={(event) => handleFieldChange({ key: 'email', event })}
       />
     </div>
@@ -120,6 +123,7 @@
         placeholder="your password"
         autocomplete="current-password"
         required
+        {disabled}
         on:message={(event) => handleFieldChange({ key: 'password', event })}
       />
     </div>
@@ -127,6 +131,7 @@
       <Input
         type="submit"
         value="submit"
+        {disabled}
       />
     </div>
   </form>
