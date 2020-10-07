@@ -1,7 +1,5 @@
 <script>
 	import * as firebase from 'firebase/app';
-	import 'firebase/auth';
-	import firebaseConfig from '../configs/firebaseConfig.mjs';
 	import Cookies from 'js-cookie';
 
 	import {
@@ -14,8 +12,6 @@
 	const { session } = stores();
 
 	onMount(async () => {
-		firebase.initializeApp(firebaseConfig);
-
 		firebase.auth().onIdTokenChanged(async (user) => {
 			try {
 				if (!user) {
