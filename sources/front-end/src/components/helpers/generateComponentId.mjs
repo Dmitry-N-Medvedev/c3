@@ -1,6 +1,6 @@
 import {
-  nanoid
-} from 'nanoid';
+  nanoid,
+} from 'nanoid/non-secure/index.js';
 
 export const generateComponentId = ({
   keyLength = 5,

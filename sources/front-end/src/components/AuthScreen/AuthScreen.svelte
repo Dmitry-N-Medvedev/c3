@@ -1,4 +1,12 @@
 <script>
+  import {
+    onMount,
+  } from 'svelte';
+
+  import * as firebase from 'firebase/app';
+  import 'firebase/auth';
+  import firebaseConfig from '../../configs/firebaseConfig.mjs';
+
   import Input from '../Controls/Inputs/Input.svelte';
 
   let disabled = false;
@@ -7,16 +15,29 @@
     console.debug('AuthScreen:handleFieldChange', key, event);
   };
 
-  const handleFormSubmit = (event) => {
+  const handleFormSubmit = async (event) => {
     const email = event.target?.email?.value ?? null;
     const password = event.target?.password?.value ?? null;
+    let signInInfo = null;
 
     disabled = email && password;
 
     if (disabled) {
-      console.debug('handleFormSubmit', email, password);
+      try {
+        signInInfo = await firebase.auth().signInWithEmailAndPassword(email, password);
+
+        console.debug('signInInfo:', signInInfo);
+      } catch (error) {
+        const { code, message } = error;
+
+        console.error(code, message);
+      }
     }
   };
+
+  onMount(() => {
+    firebase.initializeApp(firebaseConfig);
+  });
 </script>
 
 <style>

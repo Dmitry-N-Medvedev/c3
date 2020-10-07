@@ -39,6 +39,7 @@ export default {
 				emitCss: true,
 			}),
 			resolve({
+				mainFields: ['browser'],
 				browser: true,
 				dedupe: ['svelte'],
 			}),
@@ -90,6 +91,7 @@ export default {
 				dev,
 			}),
 			resolve({
+				mainFields: ['main', 'module'],
 				dedupe: ['svelte'],
 			}),
 			commonjs(),
@@ -104,7 +106,9 @@ export default {
 		input: config.serviceworker.input(),
 		output: config.serviceworker.output(),
 		plugins: [
-			resolve(),
+			resolve({
+				mainFields: ['browser'],
+			}),
 			replace({
 				'process.browser': true,
 				'process.env.NODE_ENV': JSON.stringify(mode),
