@@ -2,6 +2,7 @@
   import {
     onMount,
   } from 'svelte';
+  import { goto } from '@sapper/app'
 
   import * as firebase from 'firebase/app';
   import 'firebase/auth';
@@ -27,6 +28,8 @@
         signInInfo = await firebase.auth().signInWithEmailAndPassword(email, password);
 
         console.debug('signInInfo:', signInInfo);
+
+        goto('/');
       } catch (error) {
         const { code, message } = error;
 

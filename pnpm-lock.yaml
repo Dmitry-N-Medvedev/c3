@@ -21,7 +21,9 @@ importers:
   sources/front-end:
     dependencies:
       compression: 1.7.4
+      cookie-parser: 1.4.5
       firebase: 7.22.1
+      js-cookie: 2.2.1
       nanoid: 3.1.12
       polka: 1.0.0-next.11
       sirv: 1.0.6
@@ -55,9 +57,11 @@ importers:
       '@rollup/plugin-replace': ^2.2.0
       '@surma/rollup-plugin-off-main-thread': ^1.4.1
       compression: ^1.7.1
+      cookie-parser: ^1.4.5
       eslint-plugin-node: ^11.1.0
       eslint-plugin-svelte3: ^2.7.3
       firebase: ^7.22.1
+      js-cookie: ^2.2.1
       nanoid: ^3.1.12
       polka: next
       rollup: ^2.3.4
@@ -1982,6 +1986,25 @@ packages:
     dev: true
     resolution:
       integrity: sha512-4FJkXzKXEDB1snCFZlLP4gpC3JILicCpGbzG9f9G7tGqGCzETQ2hWPrcinA9oU4wtf2biUaEH5065UnMeR33oA==
+  /cookie-parser/1.4.5:
+    dependencies:
+      cookie: 0.4.0
+      cookie-signature: 1.0.6
+    dev: false
+    engines:
+      node: '>= 0.8.0'
+    resolution:
+      integrity: sha512-f13bPUj/gG/5mDr+xLmSxxDsB9DQiTIfhJS/sqjrmfAWiAN+x2O4i/XguTL9yDZ+/IFDanJ+5x7hC4CXT9Tdzw==
+  /cookie-signature/1.0.6:
+    dev: false
+    resolution:
+      integrity: sha1-4wOogrNCzD7oylE6eZmXNNqzriw=
+  /cookie/0.4.0:
+    dev: false
+    engines:
+      node: '>= 0.6'
+    resolution:
+      integrity: sha512-+Hp8fLp57wnUSt0tY0tHEXh4voZRDnoIrZPqlo3DPiI4y9lwg/jqx+1Om94/W6ZaPDOUbnjOt/99w66zk+l1Xg==
   /core-js-compat/3.6.5:
     dependencies:
       browserslist: 4.14.5
@@ -3202,6 +3225,10 @@ packages:
       node: '>= 10.13.0'
     resolution:
       integrity: sha512-kTw66Dn4ZX7WpjZ7T/SUDgRhapFRKWmisVAF0Rv4Fu8SLFD7eLbqpLvbxVqYhSgaWa7I+bW7pHnbyfNsH6stug==
+  /js-cookie/2.2.1:
+    dev: false
+    resolution:
+      integrity: sha512-HvdH2LzI/EAZcUwA8+0nKNtWHqS+ZmijLA30RwZA0bo7ToCckjK5MkGhjED9KoRcXO6BaGI3I9UIzSA1FKFPOQ==
   /js-tokens/4.0.0:
     dev: true
     resolution:

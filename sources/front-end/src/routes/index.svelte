@@ -1,8 +1,20 @@
+<script context="module">
+	export async function preload(page, session) {
+		const {
+			user,
+		} = session;
+
+		return {
+			user,
+		};
+	}
+</script>
+
 <script>
 	import AuthScreen from "../components/AuthScreen/AuthScreen.svelte";
 	import OrdersScreen from '../components/OrdersScreen/OrdersScreen.svelte';
 
-	let isAuthenticated = false;
+	export let user;
 </script>
 
 <style>
@@ -12,8 +24,8 @@
 	<title>c3</title>
 </svelte:head>
 
-{#if isAuthenticated === true}
-	<OrdersScreen />
-{:else}
+{#if user === false}
 	<AuthScreen />
+{:else}
+	<OrdersScreen />
 {/if}

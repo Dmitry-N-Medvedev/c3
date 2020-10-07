@@ -17,7 +17,9 @@
   },
   "dependencies": {
     "compression": "^1.7.1",
+    "cookie-parser": "^1.4.5",
     "firebase": "^7.22.1",
+    "js-cookie": "^2.2.1",
     "nanoid": "^3.1.12",
     "polka": "next",
     "sirv": "^1.0.0"
