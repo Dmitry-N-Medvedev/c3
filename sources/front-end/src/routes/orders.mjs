@@ -4,7 +4,7 @@ import {
 
 const als = new AsyncLocalStorage();
 
-const handleDataChunk = (chunk) => {
+const handleDataChunk = async (chunk) => {
   const { body } = als.getStore();
 
   body.push(chunk);
@@ -46,8 +46,6 @@ export const post = async (req, res, next) => {
       } catch (error) {
         result = JSON.stringify(error.message);
       }
-
-      console.debug('command/result', command, result);
 
       res.end(JSON.stringify(result));
     });
