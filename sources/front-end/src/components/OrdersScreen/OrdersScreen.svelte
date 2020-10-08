@@ -42,13 +42,20 @@
     pointer-events: all;
   }
 
-  .order,
-  .order > div {
+  #orders > div:not(:last-of-type) {
+    border-bottom: 3px solid black;
+  }
+
+  .row,
+  .row > div,
+  .caption-row,
+  .caption-row > div {
     display: flex;
     width: 100%;
   }
 
-  .order > div {
+  .row > div,
+  .caption-row > div {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -57,20 +64,30 @@
     margin-bottom: 0.25vh;
 
     height: 5vh;
+  }
 
-    background-color: beige;
+  .row > div {
+    font-size: max(0.75vw, 0.75vh);
+    color: black;
+  }
+
+  .caption-row > div {
+    text-transform: capitalize;
+    font-weight: 600;
+    font-size: max(1vw, 1vh);
+    color: black;
   }
 </style>
 
 <article id="orders">
-  <div class="order">
-    <div class="order-title">title</div>
-    <div class="order-bookingDate">bookingDate</div>
-    <div class="order-address">address</div>
-    <div class="order-customer">customer</div>
+  <div class="caption-row">
+    <div class="caption-title">title</div>
+    <div class="caption-bookingDate">booking date</div>
+    <div class="caption-address">address</div>
+    <div class="caption-customer">customer</div>
   </div>
   {#each orders as {id, title, bookingDate, address, customer}}
-    <div class="order" {id}>
+    <div class="row" {id}>
       <div class="order-title">{title}</div>
       <div class="order-bookingDate">{bookingDate}</div>
       <div class="order-address">{address}</div>
