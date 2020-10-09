@@ -23,11 +23,7 @@ const fetchUserInfo = async (userId) => {
 
   const snapshot = await usersRef.where('uid', '==', userId).get();
 
-  if (snapshot.empty) {
-    return result;
-  }
-
-  return {
+  return snapshot.empty ? result : {
     ...result,
     ...(snapshot.docs[0]).data(),
   };
