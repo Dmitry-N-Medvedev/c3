@@ -1,10 +1,13 @@
 <script>
-  import * as firebase from 'firebase/app';
-  import 'firebase/auth';
+  // import * as firebase from 'firebase/app';
+  // import 'firebase/auth';
   import Input from '../Controls/Inputs/Input.svelte';
   import {
     userInfoStore,
   } from '../../stores/userInfoStore.mjs';
+  import {
+    AuthServiceMessages,
+  } from '../../../services/constants/AuthServiceMessages.mjs';
 
   let disabled = false;
 
@@ -44,9 +47,18 @@
 
     if (disabled) {
       try {
-        const authResult = await firebase.auth().signInWithEmailAndPassword(email, password);
+        // const authResult = await firebase.auth().signInWithEmailAndPassword(email, password);
+        // requestUserInfo(authResult?.user?.uid);
 
-        requestUserInfo(authResult?.user?.uid);
+        window.postMessage({
+          ...AuthServiceMessages.signInWithEmailAndPassword,
+          ...{
+            payload: {
+              email,
+              password,
+            },
+          }
+        });
       } catch (error) {
         const { code, message } = error;
 

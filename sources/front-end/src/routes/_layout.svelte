@@ -1,39 +1,32 @@
 <script>
-	import * as firebase from 'firebase/app';
-	import Cookies from 'js-cookie';
+	import {
+		stores,
+	} from '@sapper/app';
 	import Nav from '../components/Nav.svelte';
 	import Basement from '../components/Basement.svelte';
-
 	import {
 		onMount,
 	} from 'svelte';
 	import {
-		stores,
-	} from '@sapper/app';
+		AuthAdapter,
+	} from '../../client/AuthAdapter.mjs';
 
-	const { session } = stores();
+	const {
+		session,
+	} = stores();
+
+	let authAdapter = null;
+
+	const handleWindowUnload = () => {
+    window.removeEventListener('unload', handleWindowUnload);
+
+		authAdapter.destroy();
+	};
 
 	onMount(async () => {
-		firebase.auth().onIdTokenChanged(async (user) => {
-			try {
-				if (!user) {
-					$session.user = false;
-					Cookies.set('token', $session.user);
+		window.addEventListener('unload', handleWindowUnload);
 
-					return;
-				}
-
-				$session.user = await user.getIdToken();
-				Cookies.set('token', $session.user);
-			} catch (error) {
-				$session.user = false;
-				Cookies.set('token', $session.user);
-
-				console.error(error);
-
-				return;
-			}
-		});
+		authAdapter = new AuthAdapter(session);
 	});
 </script>
 

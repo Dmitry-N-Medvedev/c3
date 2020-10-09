@@ -1,17 +1,31 @@
 <script>
-  import * as firebase from 'firebase/app';
   import {
-    stores,
-  } from '@sapper/app';
+    AuthServiceMessages,
+  } from '../../services/constants/AuthServiceMessages.mjs';
+  import {
+    onMount,
+  } from 'svelte';
   import Input from './Controls/Inputs/Input.svelte';
 
-  const { session } = stores();
-
   const handleLogout = async () => {
-    await firebase.auth().signOut();
-
-    $session.user = false;
+    if (window) {
+      window.postMessage(AuthServiceMessages.signOut);
+    }
   };
+
+  const handleWindowMessage = ({ data }) => {
+    console.debug('Nav.svelte:handleWindowMessage', data);
+  };
+
+  onMount(() => {
+    const finalize = () => {
+      window.removeEventListener('message', handleWindowMessage);
+    };
+
+    window.addEventListener('message', handleWindowMessage);
+
+    window.addEventListener('unload', finalize);
+  });
 </script>
 
 <style>
