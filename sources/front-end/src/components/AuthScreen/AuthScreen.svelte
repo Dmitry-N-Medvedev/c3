@@ -2,11 +2,38 @@
   import * as firebase from 'firebase/app';
   import 'firebase/auth';
   import Input from '../Controls/Inputs/Input.svelte';
+  import {
+    userInfoStore,
+  } from '../../stores/userInfoStore.mjs';
 
   let disabled = false;
 
   const handleFieldChange = ({ key, event }) => {
     console.debug('AuthScreen:handleFieldChange', key, event);
+  };
+
+  const requestUserInfo = async (userId) => {
+    try {
+      const response = await fetch('/user', {
+        method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        credentials: 'same-origin',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        redirect: 'follow',
+        referrerPolicy: 'no-referrer',
+        body: JSON.stringify({
+          userId,
+        }),
+      });
+      const userInfo = await response.json();
+
+      userInfoStore.udpateUserInfo(userInfo);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const handleFormSubmit = async (event) => {
@@ -17,7 +44,9 @@
 
     if (disabled) {
       try {
-        await firebase.auth().signInWithEmailAndPassword(email, password);
+        const authResult = await firebase.auth().signInWithEmailAndPassword(email, password);
+
+        requestUserInfo(authResult?.user?.uid);
       } catch (error) {
         const { code, message } = error;
 

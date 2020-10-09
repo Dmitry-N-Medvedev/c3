@@ -2,6 +2,7 @@
 	import * as firebase from 'firebase/app';
 	import Cookies from 'js-cookie';
 	import Nav from '../components/Nav.svelte';
+	import Basement from '../components/Basement.svelte';
 
 	import {
 		onMount,
@@ -41,4 +42,7 @@
 		<Nav />
 	{/if}
 	<slot></slot>
+	{#if $session.user}
+		<Basement />
+	{/if}
 </main>
