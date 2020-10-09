@@ -14,8 +14,6 @@ const createUserInfoStore = () => {
   return {
     subscribe,
     udpateUserInfo: (userInfo) => update((state) => {
-      console.debug('userInfoStore.udpateUserInfo');
-
       return {
         ...state,
         ...userInfo,
