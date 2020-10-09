@@ -24,8 +24,6 @@ const commandHandlers = Object.freeze({
 });
 
 export const get = async (req, res, next) => {
-  console.debug('orders.get');
-
   als.run({ body: [] }, () => {
     req.on('data', (chunk) => {
       const { body } = als.getStore();
