@@ -40,6 +40,8 @@ export default {
 			}),
 			resolve({
 				mainFields: ['browser'],
+				// jsnext: true,
+				// module: true,
 				browser: true,
 				dedupe: ['svelte'],
 			}),
@@ -92,6 +94,8 @@ export default {
 			}),
 			resolve({
 				mainFields: ['main', 'module'],
+				// jsnext: true,
+				// module: true,
 				dedupe: ['svelte'],
 			}),
 			commonjs(),
@@ -107,7 +111,10 @@ export default {
 		output: config.serviceworker.output(),
 		plugins: [
 			resolve({
-				mainFields: ['browser'],
+				jsnext: true,
+				module: true,
+				browser: true,
+				// mainFields: ['browser'],
 			}),
 			replace({
 				'process.browser': true,
