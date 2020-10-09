@@ -1,27 +1,48 @@
+<!-- <script context="module">
+  export async function preload(page, session) {
+    console.log('preload');
+
+    let orders = [];
+
+    const response = await this.fetch('/orders', {
+      method: 'GET',
+      mode: 'cors',
+      cache: 'no-cache',
+      credentials: 'same-origin',
+      redirect: 'follow',
+      referrerPolicy: 'no-referrer',
+    });
+
+    console.debug('response', response);
+
+    orders = await response.json();
+
+    console.debug('fetch orders', orders);
+
+    return { orders };
+  };
+</script> -->
+
 <script>
   import {
     onMount,
   } from 'svelte';
-  import * as firebase from 'firebase/app';
-  import firebaseConfig from '../../configs/firebaseConfig.mjs';
 
-  let orders = [];
+  let orders;
 
   onMount(async () => {
-    const ordersResponse = await fetch('/orders', {
-      method: 'POST',
+    const response = await fetch('/orders', {
+      method: 'GET',
       mode: 'cors',
       cache: 'no-cache',
       credentials: 'same-origin',
-      headers: {
-        'Content-Type': 'application/json',
-      },
       redirect: 'follow',
       referrerPolicy: 'no-referrer',
-      body: JSON.stringify({ op: 'get:orders' }),
     });
 
-    orders = await ordersResponse.json();
+    orders = await response.json();
+    
+    console.debug('orders', orders);
   });
 </script>
 
@@ -38,6 +59,9 @@
 
     width: 75vw;
     height: 100vh;
+
+    margin: 0;
+    padding: 1vh 1vw;
 
     pointer-events: all;
   }
@@ -86,12 +110,14 @@
     <div class="caption-address">address</div>
     <div class="caption-customer">customer</div>
   </div>
-  {#each orders as {id, title, bookingDate, address, customer}}
-    <div class="row" {id}>
-      <div class="order-title">{title}</div>
-      <div class="order-bookingDate">{bookingDate}</div>
-      <div class="order-address">{address}</div>
-      <div class="order-customer">{customer}</div>
-    </div>
-  {/each}
+  {#if orders}
+    {#each orders as {title, bookingDate, address, customer}}
+      <div class="row">
+        <div class="order-title">{title}</div>
+        <div class="order-bookingDate">{bookingDate}</div>
+        <div class="order-address">{address}</div>
+        <div class="order-customer">{customer}</div>
+      </div>
+    {/each}
+  {/if}
 </article>
