@@ -1,28 +1,3 @@
-<!-- <script context="module">
-  export async function preload(page, session) {
-    console.log('preload');
-
-    let orders = [];
-
-    const response = await this.fetch('/orders', {
-      method: 'GET',
-      mode: 'cors',
-      cache: 'no-cache',
-      credentials: 'same-origin',
-      redirect: 'follow',
-      referrerPolicy: 'no-referrer',
-    });
-
-    console.debug('response', response);
-
-    orders = await response.json();
-
-    console.debug('fetch orders', orders);
-
-    return { orders };
-  };
-</script> -->
-
 <script>
   import {
     onMount,
@@ -31,18 +6,20 @@
   let orders;
 
   onMount(async () => {
-    const response = await fetch('/orders', {
-      method: 'GET',
-      mode: 'cors',
-      cache: 'no-cache',
-      credentials: 'same-origin',
-      redirect: 'follow',
-      referrerPolicy: 'no-referrer',
-    });
-
-    orders = await response.json();
-    
-    console.debug('orders', orders);
+    try {
+      const response = await fetch('/orders', {
+        method: 'GET',
+        mode: 'cors',
+        cache: 'no-cache',
+        credentials: 'same-origin',
+        redirect: 'follow',
+        referrerPolicy: 'no-referrer',
+      });
+  
+      orders = await response.json();
+    } catch (error) {
+      console.error(error);
+    }
   });
 </script>
 
