@@ -4,6 +4,7 @@
   } from '../../services/constants/AuthServiceMessages.mjs';
   import {
     onMount,
+    onDestroy,
   } from 'svelte';
   import Input from './Controls/Inputs/Input.svelte';
 
@@ -18,13 +19,13 @@
   };
 
   onMount(() => {
-    const finalize = () => {
-      window.removeEventListener('message', handleWindowMessage);
-    };
-
     window.addEventListener('message', handleWindowMessage);
+  });
 
-    window.addEventListener('unload', finalize);
+  onDestroy(() => {
+    if (window) {
+      window.removeEventListener('message', handleWindowMessage);
+    }
   });
 </script>
 
