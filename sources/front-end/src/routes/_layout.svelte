@@ -6,6 +6,7 @@
 	import Basement from '../components/Basement.svelte';
 	import {
 		onMount,
+		onDestroy,
 	} from 'svelte';
 	import {
 		AuthAdapter,
@@ -20,13 +21,25 @@
 	const handleWindowUnload = () => {
     window.removeEventListener('unload', handleWindowUnload);
 
-		authAdapter.destroy();
+		if (authAdapter) {
+			authAdapter.destroy();
+
+			authAdapter = null;
+		}
 	};
 
 	onMount(async () => {
 		window.addEventListener('unload', handleWindowUnload);
 
 		authAdapter = new AuthAdapter(session);
+	});
+
+	onDestroy(() => {
+		if (authAdapter) {
+			authAdapter.destroy();
+
+			authAdapter = null;
+		}
 	});
 </script>
 
